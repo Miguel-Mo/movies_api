@@ -38,6 +38,35 @@ The project is deployed using Google Cloud services:
 - **Cloud Run (Flask + Waitress Implementation):** A more flexible and scalable solution using Flask and Waitress.
   - [Cloud Run Flask API](https://movies-api-flask-1054884846779.europe-southwest1.run.app/movies?limit=1&page=6)
 
+## Testing
+
+You can test the API using the following cURL commands:
+
+- Get all movies:
+  ```sh
+  curl https://movies-api-flask-1054884846779.europe-southwest1.run.app/movies
+  ```
+
+- Get paginated movies:
+  ```sh
+  curl https://movies-api-flask-1054884846779.europe-southwest1.run.app/movies?page=8"&"limit=1
+  ```
+
+- Get a specific movie by title:
+  ```sh
+  curl https://movies-api-flask-1054884846779.europe-southwest1.run.app/movies/Batman%202
+  ```
+
+- Add a new movie:
+  ```sh
+  curl -X POST -H "Content-Type: application/json" -d "{ \"title\": \"Inception\" }" https://movies-api-flask-1054884846779.europe-southwest1.run.app/movies
+  ```
+
+- Delete a movie (requires authentication):
+  ```sh
+  curl -X DELETE -H "Authorization: Basic dXNlcjpwYXNz" https://movies-api-flask-1054884846779.europe-southwest1.run.app/movies/tt1375666
+  ```
+
 ## Notes
 
 Initially, a Cloud Run service was developed using only Python, as inferred from the interview requirements. However, a second version using Flask and Waitress was implemented to provide a more straightforward and versatile solution.
